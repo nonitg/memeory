@@ -1,0 +1,41 @@
+{
+  "name": "second-brain",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "secret": "bash scripts/secret.sh",
+    "key": "bash scripts/key.sh",
+    "ship": "vercel deploy --prod --yes",
+    "test": "rm -rf .data/test && PGLITE_DIR=.data/test tsx scripts/tests/ladder.test.ts",
+    "test:whatsapp": "bash scripts/tests/whatsapp.sh"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@openrouter/ai-sdk-provider": "^3.1.0",
+    "ai": "^7.0.109",
+    "lucide-react": "^1.47.0",
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "playwright-core": "^1.63.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@11.4.0"
+}

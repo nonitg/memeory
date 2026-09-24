@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #f7f6f3;
+  --card: #ffffff;
+  --card-hover: #fbfaf8;
+  --ink: #1c1917;
+  --muted: #6b6560;
+  --faint: #a8a29e;
+  --line: #e9e6e2;
+  --accent: #d97706;
+  --accent-ink: #92400e;
+  --accent-soft: #fef3c7;
+  --good: #059669;
+  --good-soft: #d1fae5;
+  --danger: #dc2626;
+  --shadow: 0 1px 2px rgb(28 25 23 / 0.04), 0 4px 16px rgb(28 25 23 / 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #100f0e;
+    --card: #1a1917;
+    --card-hover: #201e1c;
+    --ink: #f3f1ee;
+    --muted: #a8a29e;
+    --faint: #6f6a65;
+    --line: #2b2926;
+    --accent: #f59e0b;
+    --accent-ink: #fcd34d;
+    --accent-soft: #3a2a0c;
+    --good: #34d399;
+    --good-soft: #0f2e24;
+    --danger: #f87171;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.2);
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-danger: var(--danger);
+  --shadow-soft: var(--shadow);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  background: var(--canvas);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+.animate-rise { animation: rise 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.shimmer {
+  background: linear-gradient(90deg, transparent 0, color-mix(in oklab, var(--accent) 18%, transparent) 50%, transparent 100%);
+  background-size: 200px 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise, .shimmer { animation: none; }
+}
